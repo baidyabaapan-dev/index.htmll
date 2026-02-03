@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.card{
+  background:#ffd6e5;
+  width:90%;
+  max-width:420px;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  display:none;
+  animation:fade 0.5s ease;
+}
+.card.active{display:block;}
+
+h1,h2{color:#5a0033;}
+p{color:#5a0033;margin:10px 0;}
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+}
+.red{background:#ff004f;color:white;}
+.blue{background:#007bff;color:white;}
+.white{background:white;color:#ff004f;}
+
+.btns{display:flex;gap:15px;justify-content:center;}
+.gifts{display:flex;gap:12px;justify-content:center;}
+.gift{
+  background:#ffeaf3;
+  padding:15px;
+  border-radius:15px;
+  width:90px;
+  cursor:pointer;
+}
+.options button{width:100%;margin:6px 0;}
+
+.album img, .gif{
+  width:100%;
+  border-radius:15px;
+  margin:10px 0;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(0.9);}
+  to{opacity:1;transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="card active" id="page1">
+  <img class="gif" src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif">
+  <h1>Will you be mine? 🥺</h1>
+  <p>Life is an incredible journey and I want to spend it with you.</p>
+  <div class="btns">
+    <button class="red" onclick="go(2)">YES</button>
+    <button class="blue" id="noBtn">NO</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card" id="page2">
+  <img class="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+  <h1>Something for You 🎁</h1><br>
+  <div class="gifts">
+    <div class="gift" onclick="go(3)">Gift 1</div>
+    <div class="gift" onclick="go(4)">Gift 2</div>
+    <div class="gift" onclick="go(5)">Gift 3</div>
+  </div>
+</div>
+
+<!-- GIFT 1 QUIZ -->
+<div class="card" id="page3">
+  <img class="gif" src="https://media.giphy.com/media/l4FGpP4lxGGgK5CBW/giphy.gif">
+  <h2>Quiz for you 😘</h2>
+  <p>Where do I plan to spend my life?</p>
+  <div class="options">
+    <button onclick="wrong()">Paris</button>
+    <button class="red" onclick="correct()">In Your Heart ❤️</button>
+    <button onclick="wrong()">On Mars</button>
+  </div>
+  <br>
+  <button class="white" onclick="go(2)">← Back</button>
+</div>
+
+<!-- GIFT 2 LOVE LETTER -->
+<div class="card" id="page4">
+  <img class="gif" src="https://media.giphy.com/media/3ohs4BSacFKI7A717y/giphy.gif">
+  <h2>My Love Letter 💌</h2>
+  <p>
+1. From the day you came into my life 💖<br>
+2. Everything started feeling magical ✨<br>
+3. Your smile is my favorite place 😊<br>
+4. Your voice calms my soul 🎶<br>
+5. You make my bad days better 🌈<br>
+6. And my good days perfect 💕<br>
+7. I love your kindness 😇<br>
+8. I love your madness 😜<br>
+9. I love your honesty 💎<br>
+10. I love everything about you ❤️<br>
+11. You are my safe place 🏡<br>
+12. My comfort person 🤍<br>
+13. My favorite thought 💭<br>
+14. My happiest reason 😍<br>
+15. With you, time flies ⏳<br>
+16. Without you, it stops 🥺<br>
+17. I promise to stand by you 🤝<br>
+18. In every situation 🌧️☀️<br>
+19. I choose you everyday 💍<br>
+20. And I always will ♾️<br>
+21. You are my forever 💘<br>
+22. My always 💞<br>
+23. My everything 🌍<br>
+24. I’m grateful for you 🙏<br>
+25. Proud of you 🌸<br>
+26. Lucky to have you 🍀<br>
+27. Loving you is easy 💓<br>
+28. Leaving you is impossible 🥹<br>
+29. You are my heart ❤️<br>
+30. And my home 🏠
+  </p>
+  <button class="white" onclick="go(2)">← Back</button>
+</div>
+
+<!-- GIFT 3 ALBUM -->
+<div class="card" id="page5">
+  <img class="gif" src="https://media.giphy.com/media/xT0GqeSlGSRQut4x8Y/giphy.gif">
+  <h2>Our Memories 📸</h2>
+  <div class="album">
+    <img src="https://media.giphy.com/media/1BcfiGlOGXzQ4/giphy.gif">
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+    <img src="https://media.giphy.com/media/3ohhwF34cGDoFFhRfy/giphy.gif">
+  </div>
+  <button class="white" onclick="go(2)">← Back</button>
+</div>
+
+<script>
+function go(n){
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+  document.getElementById('page'+n).classList.add('active');
+}
+
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.position="absolute";
+  noBtn.style.left=Math.random()*70+"%";
+  noBtn.style.top=Math.random()*70+"%";
+});
+
+function correct(){
+  alert("Correct! You really love me 😍");
+}
+function wrong(){
+  alert("Wrong 😝 Try again!");
+}
+</script>
+
+</body>
+</html>
